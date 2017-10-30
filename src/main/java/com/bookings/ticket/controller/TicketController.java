@@ -102,4 +102,23 @@ public class TicketController {
 	}
 
 	
+	@RequestMapping("/hz/reserve")
+	public String reserveSeats(Model model,
+			@RequestParam(value = "seatHoldId", required = true, defaultValue = "0") String seatHoldId,
+			@RequestParam(value = "email", required = true, defaultValue = "") String customerEmail) {
+
+		try {
+			model.addAttribute("seatmessage", service.reserveSeats(UUID.fromString(seatHoldId), customerEmail));
+		} catch (IllegalArgumentException ex) {
+			model.addAttribute("error", ex.getMessage());
+			model.addAttribute("url", "/hz/reserve");
+			return "reserve";
+		}
+		log.info("Execute reserveSeatsFromDAOModule");
+		model.addAttribute("url", "/hz/startBookings");
+
+		return "confirm";
+	}
+
+	
 }
