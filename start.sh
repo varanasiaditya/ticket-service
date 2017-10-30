@@ -1,0 +1,1 @@
+java -jar ticket-service-service-1.0-SNAPSHOT.war com.bookings.ticket.TicketServiceStarters --logging.config= logback.xml

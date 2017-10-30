@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: ticket-service-service
+
+logging:
+  level:
+    .: INFO
+    org.springframework: INFO
+    com.bookings.ticket: INFO
